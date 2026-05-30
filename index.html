@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITRA - iPhone и Dyson</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <i class="fas fa-store"></i>
+                    <span>DIGITRA</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#products">Товары</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Добро пожаловать в DIGITRA</h1>
+            <p>Лучший выбор iPhone и Dyson в России</p>
+            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                Смотреть товары
+            </button>
+        </div>
+    </section>
+
+    <!-- Корзина -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Корзина</h2>
+            <button class="close-btn" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Корзина пуста</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotal">0 ₽</span>
+            </div>
+            <button class="btn btn-primary btn-full" onclick="checkout()">Оформить заказ</button>
+        </div>
+    </div>
+
+    <!-- Фильтры и каталог -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Наш каталог</h2>
+            
+            <div class="filters">
+                <input type="text" id="searchInput" class="search-input" placeholder="Поиск товара...">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">Все товары</option>
+                    <option value="iphone">iPhone</option>
+                    <option value="dyson">Dyson</option>
+                </select>
+                <select id="priceFilter" class="filter-select">
+                    <option value="">Все цены</option>
+                    <option value="0-50000">0 - 50,000 ₽</option>
+                    <option value="50000-100000">50,000 - 100,000 ₽</option>
+                    <option value="100000-200000">100,000 - 200,000 ₽</option>
+                    <option value="200000">200,000+ ₽</option>
+                </select>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Товары загружаются здесь -->
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">О нас</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Почему выбирают DIGITRA?</h3>
+                    <ul>
+                        <li>✓ Оригинальные товары с гарантией</li>
+                        <li>✓ Быстрая доставка по всей России</li>
+                        <li>✓ Профессиональная консультация</li>
+                        <li>✓ Лучшие цены на рынке</li>
+                        <li>✓ Поддержка 24/7</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h4>5000+</h4>
+                        <p>Довольных клиентов</p>
+                    </div>
+                    <div class="stat">
+                        <h4>100%</h4>
+                        <p>Оригинальность</p>
+                    </div>
+                    <div class="stat">
+                        <h4>2-3 дня</h4>
+                        <p>Доставка</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Телефон</h4>
+                            <p>+7 (999) 123-45-67</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@digitra.ru</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Адрес</h4>
+                            <p>Москва, Россия</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="email" placeholder="Ваш email" required>
+                    <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно оформления заказа -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2>Оформление заказа</h2>
+            <form id="checkoutForm" onsubmit="submitOrder(event)">
+                <input type="text" placeholder="ФИО" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Телефон" required>
+                <input type="text" placeholder="Адрес доставки" required>
+                <textarea placeholder="Комментарий к заказу" rows="3"></textarea>
+                <button type="submit" class="btn btn-primary btn-full">Подтвердить заказ</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 DIGITRA. Все права защищены.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
